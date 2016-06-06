@@ -1,0 +1,24 @@
+{% extends "PgGsbFraisBundle::accueil.html.twig" %}
+{% block body %}
+{% block bloc1 %}
+<div id="contenu">
+<h2>Historique de toutes les affectations de véhicules</h2>
+<table>
+	         {% for uneL in ListeVehiculesVisiteurs%}
+	      	        <th>   
+
+           	 <br/>Matricule: {{ uneL.numImmat}}
+             <br/>Marque: {{ uneL.marque}}
+             <br/>Modèle: {{ uneL.modele}}
+             <br/>Couleur: {{ uneL.couleur}}
+             <br/>Affecté le: {{ uneL.dateDebut}}
+             <br/>Rendu le: {{ uneL.dateFin}}
+	      	 <br/> Visiteur: {{ uneL.nom}} {{ uneL.prenom}}</th>
+             
+             {%endfor%}
+</table>			
+
+</div>
+
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "PgGsbFraisBundle::accueil.html.twig" %}
+{% block body %}
+{% block bloc1 %}
+<div id="contenu">
+<h2>Supprimer un véhicule</h2>
+<table>
+	         {% for uneL in ListeVehiculesVisiteurs%}
+	      	        <th>   
+
+           	 <br/>Matricule: {{ uneL.numImmat}}
+             <br/>Marque: {{ uneL.marque}}
+             <br/>Modèle: {{ uneL.modele}}
+             <br/>Couleur: {{ uneL.couleur}}
+
+                  <form action="{{ path('supprimerlevehicule') }}" method="POST" name="formulaire" onSubmit="boutonEnvoi.disabled=true; boutonEnvoi.value = 'Suppression en cours';">
+ 
+ <input type="submit" name="boutonEnvoi" value="Supprimer"></form>
+             {%endfor%}
+</table>			
+
+</div>
+
+{% endblock %}
+{% endblock %}

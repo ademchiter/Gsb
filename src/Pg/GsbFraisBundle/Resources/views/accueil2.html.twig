@@ -1,0 +1,79 @@
+{% extends "PgGsbFraisBundle::layout.html.twig" %}
+{% block menu %}
+<div id="menuGauche">
+     <div id="infosUtil">
+         <h3>
+            {%if(app.session.get('nom') is defined )%}
+                           Visiteur:
+                           Bonjour, {{app.session.get('nom')}}!<br>   
+            {%endif%}
+        </h3>
+        <h4>
+            {%if(app.session.get('idnumImmat') is defined )%}
+                           Matricule: {{app.session.get('idnumImmat')}}<br> <br>  
+            {%endif%}
+            
+
+             {%if(app.session.get('refTablette') is defined )%}
+                           Tablette n°: {{app.session.get('refTablette')}}<br>  
+                          
+            {%endif%}
+
+
+            {%if(app.session.get('memoire') is not null )%}
+
+                       Mémoire externe: {{app.session.get('memoire')}} Go<br> <br>  
+            {% else %}
+            Pas de mémoire externe<br> <br> 
+            {%endif%}
+
+
+            {%if(app.session.get('statut') == "DSI")%}
+            Rôle: DSI
+            {%endif%}
+        </h4>
+     </div>  
+        <ul id="menuList">
+      {%if(app.session.get('statut') == "DSI")%}
+
+       <a href="{{path('pg_gsb_frais_listevehicules')}}" title="Mes véhicules">Historique affectations de véhicules</a>
+           </li> 
+      {%endif%}
+
+      {%if(app.session.get('statut') == "DSI")%}
+
+       <a href="{{path('pg_gsb_frais_ajoutervehicule')}}" title="Ajouter un véhicule</a>">Ajouter un véhicule</a>
+           </li> 
+    
+       <a href="{{path('pg_gsb_frais_supprimervehicule')}}" title="Supprimer un véhicule</a>">Supprimer un véhicule</a>
+           </li> 
+  {%endif%}
+
+         <li class="smenu">
+              <a href="{{path('pg_gsb_frais_mesvehicules')}}" title="Mes véhicules">Mes véhicules</a>
+           </li>  
+     
+           <li class="smenu">
+              <a href="{{path('pg_gsb_frais_saisirfrais')}}" title="Saisie fiche de frais ">Saisie fiche de frais</a>
+           </li>  
+           <li class="smenu">
+              <a href="{{path('pg_gsb_frais_listefrais')}}" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
+           </li>  
+           <li class="smenu">
+              <a href="{{path('pg_gsb_frais_deconnexion')}}" title="Se déconnecter">Déconnexion</a>
+           </li>
+
+           
+         </ul>
+     </div> 
+{% endblock%}
+
+
+{#
+ <li class="smenu">
+              <a href="{{path('pg_gsb_frais_saisirfrais')}}" title="Saisie fiche de frais ">Saisie fiche de frais</a>
+           </li>
+           <li class="smenu">
+              <a href="{{path('pg_gsb_frais_listefrais')}}" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
+           </li>
+#}
